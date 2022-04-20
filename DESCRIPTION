@@ -1,10 +1,11 @@
 Package: extreme
-Title: What the Package Does (One Line, Title Case)
+Title: Multivariate Extreme Region Estimation for Elliptical Distributions
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Jaakko", "Pere", "jaakko.pere@aalto.fi", role = c("aut", "cre"))
+Description: Provides functions for estimation of extreme value index and
+    extreme quantiles. Also, one can create samples from elliptical
+    distributions.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
