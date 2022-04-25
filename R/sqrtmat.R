@@ -1,9 +1,10 @@
 #' Calculate symmetric square root of a symmetric positive definite matrix
 #'
-#' @param sigma Scatter matrix
+#' Returns a matrix \eqn{\Lambda} such that \eqn{\Lambda \Lambda = \Sigma}.
+#' Matrix \eqn{\Lambda} is symmetric, i.e, \eqn{\Lambda^T = \Lambda}.
 #'
-#' @return Symmetric matrix \eqn{\Lambda} such that
-#' \eqn{\Lambda \Lambda = \Sigma}.
+#' @param sigma Scatter matrix.
+#' @return A matrix.
 #' @export
 #'
 #' @examples

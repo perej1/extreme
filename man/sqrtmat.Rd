@@ -7,14 +7,14 @@
 sqrtmat(sigma)
 }
 \arguments{
-\item{sigma}{Scatter matrix}
+\item{sigma}{Scatter matrix.}
 }
 \value{
-Symmetric matrix \eqn{\Lambda} such that
-\eqn{\Lambda \Lambda = \Sigma}.
+A matrix.
 }
 \description{
-Calculate symmetric square root of a symmetric positive definite matrix
+Returns a matrix \eqn{\Lambda} such that \eqn{\Lambda \Lambda = \Sigma}.
+Matrix \eqn{\Lambda} is symmetric, i.e, \eqn{\Lambda^T = \Lambda}.
 }
 \examples{
 x <- matrix(c(1, 1, 0.5, 1), nrow = 2, byrow = TRUE)
