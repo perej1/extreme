@@ -16,8 +16,8 @@ of observations.}
 sigma is a positive-definite scatter matrix.}
 }
 \value{
-An \code{length(r)} times \code{length(mu)} matrix with one sample in
-each row.
+An \code{length(r)} times \code{length(mu)} matrix with one sample
+in each row.
 }
 \description{
 Generate a sample from an elliptical distribution.
