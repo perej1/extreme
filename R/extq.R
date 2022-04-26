@@ -8,7 +8,9 @@
 #'
 #' @param x Data vector.
 #' @param p Probability corresponding to \code{(1-p)}-quantile.
-#' @param k Threshold parameter for the estimator.
+#' @param k Threshold parameter for the estimator. Value for the parameter has
+#'   to be supplied if \code{tail=FALSE}.
+#' @param n Original sample size. Value has to be supplied if \code{tail=TRUE}.
 #' @param tail if equal to \code{TRUE}, then it is assumed that \code{x} is an
 #'   increasingly ordered sample from the tail, otherwise, it is assumed that
 #'   \code{x} is unordered vector including all observations. Also, if
@@ -19,6 +21,10 @@
 #'
 #' @examples
 #' TODO
-extq <- function(x, p, k = NULL, tail = TRUE) {
-  # TODO
+extq <- function(x, p, k = length(x), n = NULL, tail = TRUE) {
+  if (!tail) {
+    n <- length(x)
+    x <- sort(x, decreasing = FALSE)[(n - k):n]
+  }
+  x[1] * (k / (n * p))^gamma(x, tail = TRUE)
 }
