@@ -3,4 +3,3 @@
 export(extq)
 export(gamma)
 export(relliptical)
-export(sqrtmat)

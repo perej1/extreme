@@ -26,7 +26,6 @@ gamma <- function(x, k = NULL, tail = TRUE) {
   mean(x[-1])
 }
 
-
 #' Estimate Extreme Quantile for Heavy-Tailed Distributions
 #'
 #' Estimates \eqn{(1-p)}-quantile of a heavy-tailed distribution for a very

@@ -5,40 +5,54 @@
 #'
 #' @param sigma Scatter matrix.
 #' @return A matrix.
-#' @export
-#'
-#' @examples
-#' x <- matrix(c(1, 1, 0.5, 1), nrow = 2, byrow = TRUE)
-#' sqrtmat(x)
+#' @noRd
 sqrtmat <- function(sigma) {
-  val <- eigen(sigma)$values
-  vec <- eigen(sigma)$vectors
-  vec %*% diag(val^(1 / 2)) %*% t(vec)
+  eval <- eigen(sigma)$values
+  if(!all(eval > 0)) stop("Scatter matrix is not positive definite")
+  evec <- eigen(sigma)$vectors
+  evec %*% diag(eval ^ (1 / 2)) %*% t(evec)
 }
 
+#' Generate Observation from Elliptical Distribution
+#'
+#' This is a helper function for sampling from elliptical distributions.
+#'
+#' @param r Observation sampled from generating variate
+#' @param mu Location vector
+#' @param lambda Square root of the scatter matrix
+#'
+#' @return A vector of length \code{length(mu)} representing one observation
+#' @noRd
+pull_elliptical <- function(r, mu, lambda) {
+  d <- length(mu)
+
+  # Generate observation from uniform distribution on unit sphere
+  u <- MASS::mvrnorm(1, rep(0, d), diag(d))
+  u <- u / norm(u, type = "2")
+
+  as.vector(mu + r * lambda %*% u)
+}
 
 #' Simulate from an Elliptical Distribution
 #'
 #' Generate a sample from an elliptical distribution.
 #'
-#' @param r Sample from a generating variate. Also specifies number
-#'   of observations.
-#' @param mu Location vector.
-#' @param lambda A Matrix such that \code{lambda \%*\% lambda == sigma}, where
-#'   sigma is a positive-definite scatter matrix.
-#' @return An \code{length(r)} times \code{length(mu)} matrix with one sample
+#' Samples from elliptical distribution with location \code{mu}, scatter matrix
+#' \code{sigma} and generating variate specified by the sample x. Size of the
+#' sample is \code{length(x)}.
+#'
+#' @param x Sample from generating variate.
+#' @param mu Location vector
+#' @param sigma Positive-definite scatter matrix
+#' @return An \code{length(x)} times \code{length(mu)} matrix with one sample
 #'   in each row.
 #' @export
 #'
 #' @examples
 #' TODO
-relliptical <- function(r, mu, lambda) {
-  d <- length(mu)
-  n <- length(r)
-
-  # Generate sample from uniform distribution on unit sphere
-  u <- MASS::mvrnorm(n, rep(0, d), diag(d))
-  u <- u / norm(u, type = "2")
-
-  matrix(mu, nrow = n, ncol = d, byrow = TRUE) + r * u %*% t(lambda)
+relliptical <- function(x, mu, sigma) {
+  if(dim(sigma) != rep(length(mu), 2)) {
+    error("Dimensions of mu and sigma do not match")
+  }
+  purrr::map(x, ~ pull_elliptical(.x, mu, sqrtmat(sigma)))
 }
