@@ -1,3 +1,22 @@
+#' Calculate symmetric square root of a symmetric positive definite matrix
+#'
+#' Returns a matrix \eqn{\Lambda} such that \eqn{\Lambda \Lambda = \Sigma}.
+#' Matrix \eqn{\Lambda} is symmetric, i.e, \eqn{\Lambda^T = \Lambda}.
+#'
+#' @param sigma Scatter matrix.
+#' @return A matrix.
+#' @export
+#'
+#' @examples
+#' x <- matrix(c(1, 1, 0.5, 1), nrow = 2, byrow = TRUE)
+#' sqrtmat(x)
+sqrtmat <- function(sigma) {
+  val <- eigen(sigma)$values
+  vec <- eigen(sigma)$vectors
+  vec %*% diag(val^(1 / 2)) %*% t(vec)
+}
+
+
 #' Simulate from an Elliptical Distribution
 #'
 #' Generate a sample from an elliptical distribution.
@@ -18,7 +37,7 @@ relliptical <- function(r, mu, lambda) {
   n <- length(r)
 
   # Generate sample from uniform distribution on unit sphere
-  u <- rmvnorm(n, rep(0, d), diag(d))
+  u <- MASS::mvrnorm(n, rep(0, d), diag(d))
   u <- u / norm(u, type = "2")
 
   matrix(mu, nrow = n, ncol = d, byrow = TRUE) + r * u %*% t(lambda)

@@ -14,7 +14,7 @@ validate_extremeq <- function(x) {
 }
 
 extremeq <- function(mu, scatter) {
-  validate_extremellipse(new_extremellipse(mu, scatter))
+  validate_extremeq(new_extremeq(mu, scatter))
 }
 
 mcint <- function(lower, upper, f, n = 10000) {
