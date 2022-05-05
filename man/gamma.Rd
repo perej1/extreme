@@ -20,7 +20,7 @@ increasingly ordered sample from the tail, otherwise, it is assumed that
 A scalar, estimate for extreme value index.
 }
 \description{
-Use Hill estimator for estimating the extreme value index.
+Use Hill estimator for estimating extreme value index.
 }
 \details{
 Remember that Hill estimator is consistent only for heavy-tailed

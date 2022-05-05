@@ -1,6 +1,6 @@
 #' Estimate Extreme Value Index
 #'
-#' Use Hill estimator for estimating the extreme value index.
+#' Use Hill estimator for estimating extreme value index.
 #'
 #' Remember that Hill estimator is consistent only for heavy-tailed
 #' distributions since by construction the estimate is always positive.

@@ -36,3 +36,12 @@ test_that("error is thrown for matrices that are not positive definite", {
 rgent <- function(n, d, df){
   sqrt(d * rf(n, d, df))
 }
+
+mu <- c(1, -1)
+
+test_that("output of relliptical has right dimensions", {
+  n <- 4
+  d <- 2
+  x <- rgent(n, d, 1)
+  expect_equal(dim(relliptical(x, mu, sigma1)), c(n, d))
+})

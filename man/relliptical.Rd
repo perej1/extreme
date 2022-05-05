@@ -9,13 +9,13 @@ relliptical(x, mu, sigma)
 \arguments{
 \item{x}{Sample from generating variate.}
 
-\item{mu}{Location vector}
+\item{mu}{Location vector.}
 
-\item{sigma}{Positive-definite scatter matrix}
+\item{sigma}{Positive-definite scatter matrix.}
 }
 \value{
-An \code{length(x)} times \code{length(mu)} matrix with one sample
-in each row.
+An \code{length(x)} times \code{length(mu)} matrix with one
+observation in each row.
 }
 \description{
 Generate a sample from an elliptical distribution.

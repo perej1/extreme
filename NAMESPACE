@@ -3,3 +3,4 @@
 export(extq)
 export(gamma)
 export(relliptical)
+import(rlang)
