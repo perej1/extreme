@@ -7,7 +7,7 @@
 #' @noRd
 sqrtmat <- function(sigma) {
   eval <- eigen(sigma)$values
-  if(!all(eval > 0)) abort("Scatter matrix is not positive definite")
+  if (!all(eval > 0)) abort("Scatter matrix is not positive definite")
   evec <- eigen(sigma)$vectors
   evec %*% diag(eval ^ (1 / 2)) %*% t(evec)
 }
@@ -50,7 +50,7 @@ pull_elliptical <- function(r, mu, lambda) {
 #' @examples
 #' TODO
 relliptical <- function(x, mu, sigma) {
-  if(!all(dim(sigma) == rep(length(mu), 2))) {
+  if (!all(dim(sigma) == rep(length(mu), 2))) {
     abort("Dimensions of mu and sigma do not match")
   }
   x <- purrr::map(x, ~ pull_elliptical(.x, mu, sqrtmat(sigma)))
