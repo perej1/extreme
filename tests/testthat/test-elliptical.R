@@ -1,6 +1,8 @@
 sigma1 <- matrix(c(11, 10.5, 10.5, 11.25), nrow = 2, byrow = TRUE)
 sigma2 <- matrix(c(2, -1, 0, -1, 2, -1, 0, -1, 2), nrow = 3, byrow = TRUE)
-sigma <- matrix(c(1,2,2,1), byrow = T, nrow = 2) # not posdef
+sigma <- matrix(c(1, 2, 2, 1), byrow = T, nrow = 2) # not posdef
+
+mu <- c(1, -1)
 
 lambda1 <- sqrtmat(sigma1)
 lambda2 <- sqrtmat(sigma2)
@@ -23,21 +25,6 @@ test_that("square root times square root is equal to original", {
 test_that("error is thrown for matrices that are not positive definite", {
   expect_error(sqrtmat(sigma), "Scatter matrix is not positive definite")
 })
-
-#' Generate sample from generating variate of t-distribution
-#'
-#' @param n Sample size.
-#' @param d Dimensions of t-distribution.
-#' @param df Degrees of freedom.
-#'
-#' @return A vector of size \code{n} representing sample from generating
-#'   variate of t-distribution.
-#' @noRd
-rgent <- function(n, d, df){
-  sqrt(d * rf(n, d, df))
-}
-
-mu <- c(1, -1)
 
 test_that("output of relliptical has right dimensions", {
   n <- 4
