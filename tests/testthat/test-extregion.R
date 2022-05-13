@@ -6,8 +6,10 @@ x <- relliptical(rgent(n, 2, 10), mu, sigma)
 test_that("output is ellipsoidq object", {
   ret <- extregion(x, 10e-3, 10, method = "sample")
   expect_s3_class(extregion(x, 10e-3, 10, method = "sample"), "ellipsoidq")
-  expect_s3_class(extregion(x, 10e-3, 10, method = "mcd", alpha = 0.5),
-                  "ellipsoidq")
+  expect_s3_class(
+    extregion(x, 10e-3, 10, method = "mcd", alpha = 0.5),
+    "ellipsoidq"
+  )
 })
 
 test_that("error is thrown for invalid method", {
@@ -16,7 +18,9 @@ test_that("error is thrown for invalid method", {
 })
 
 test_that("error is thrown if method is mcd but alpha is invalid", {
-  expect_error(extregion(x, 10e-3, 10, method = "mcd", alpha = NULL),
-               "'method == mcd' but value for alpha is not given")
+  expect_error(
+    extregion(x, 10e-3, 10, method = "mcd", alpha = NULL),
+    "'method == mcd' but value for alpha is not given"
+  )
   expect_error(extregion(x, 10e-3, 10, method = "mcd", alpha = "a"))
 })

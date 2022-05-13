@@ -9,7 +9,7 @@
 #' @return A vector of size \code{n} representing sample from generating
 #'   variate of t-distribution.
 #' @noRd
-rgent <- function(n, d, df){
+rgent <- function(n, d, df) {
   sqrt(d * stats::rf(n, d, df))
 }
 
@@ -28,8 +28,8 @@ mvtdens <- function(x, mu, sigma, df) {
   x <- mahalanobis(x, mu, sigmainv, inverted = TRUE)
 
   term1 <- gamma((d + df) / 2) / gamma(df / 2)
-  term2 <- sqrt(det(sigmainv) / (df * pi) ^ d)
-  term3 <- (1 + x / df) ^ (-(d + df) / 2)
+  term2 <- sqrt(det(sigmainv) / (df * pi)^d)
+  term3 <- (1 + x / df)^(-(d + df) / 2)
 
   term1 * term2 * term3
 }

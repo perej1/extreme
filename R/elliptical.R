@@ -9,7 +9,7 @@ sqrtmat <- function(sigma) {
   eval <- eigen(sigma)$values
   if (!all(eval > 0)) abort("Scatter matrix is not positive definite")
   evec <- eigen(sigma)$vectors
-  evec %*% diag(eval ^ (1 / 2)) %*% t(evec)
+  evec %*% diag(eval^(1 / 2)) %*% t(evec)
 }
 
 #' Generate Observation from Elliptical Distribution
@@ -55,7 +55,8 @@ relliptical <- function(x, mu, sigma) {
   }
   x <- purrr::map(x, ~ pull_elliptical(.x, mu, sqrtmat(sigma)))
   matrix(purrr::flatten_dbl(x),
-         nrow = length(x),
-         ncol = length(mu),
-         byrow = TRUE)
+    nrow = length(x),
+    ncol = length(mu),
+    byrow = TRUE
+  )
 }

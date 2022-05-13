@@ -2,10 +2,12 @@ x <- c(10, 7, 5, 4, 1, 6, 7, 8, 4, 7)
 y <- sort(x, decreasing = FALSE)
 n <- length(x)
 k <- c(1, 3, 5, length(x) - 1)
-g <- c(log(5 / 4), 1 / 3 * log(80 / 49), 1 / 5 * log(1715 / 486),
-       1 / 9 * log(13171200))
+g <- c(
+  log(5 / 4), 1 / 3 * log(80 / 49), 1 / 5 * log(1715 / 486),
+  1 / 9 * log(13171200)
+)
 p <- 10e-3
-q <- y[n-k] * (k / (n * p)) ^ g
+q <- y[n - k] * (k / (n * p))^g
 
 test_that("extquantile gives correct outputs", {
   expect_equal(extquantile(x, p, k[1]), q[1])
