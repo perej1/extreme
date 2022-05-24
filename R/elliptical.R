@@ -48,7 +48,7 @@ pull_elliptical <- function(r, mu, lambda) {
 #' @export
 #'
 #' @examples
-#' TODO
+#' #TODO
 relliptical <- function(x, mu, sigma) {
   if (!all(dim(sigma) == rep(length(mu), 2))) {
     abort("Dimensions of mu and sigma do not match")

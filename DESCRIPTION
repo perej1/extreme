@@ -1,12 +1,15 @@
 Package: extreme
 Title: Multivariate Extreme Region Estimation for Elliptical Distributions
 Version: 0.0.0.9000
-Authors@R: 
-    person("Jaakko", "Pere", "jaakko.pere@aalto.fi", role = c("aut", "cre"))
-Description: Provides functions for estimation of extreme value index and
-    extreme quantiles. Also, one can create samples from elliptical
-    distributions.
+Authors@R:
+    person("Jaakko", "Pere", email = "jaakko.pere@gmail.com",
+      role = c("aut", "cre"))
+Description: Provides an estimator for extreme regions of multivariate
+    heavy-tailed elliptical distributions. One can also create samples from
+    elliptical distributions.
 License: MIT + file LICENSE
+URL: https://github.com/perej1/extreme
+BugReports: https://github.com/perej1/extreme/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2

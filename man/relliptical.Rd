@@ -26,5 +26,5 @@ Samples from elliptical distribution with location \code{mu}, scatter matrix
 sample is \code{length(x)}.
 }
 \examples{
-TODO
+#TODO
 }

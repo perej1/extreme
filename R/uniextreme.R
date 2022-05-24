@@ -16,7 +16,7 @@
 #' @export
 #'
 #' @examples
-#' TODO
+#' #TODO
 extquantile <- function(x, p, k) {
   n <- length(x)
   if (p <= 0 || p >= 1) abort("p must be a value such that 0 < p < 1")

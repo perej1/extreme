@@ -25,7 +25,7 @@ rgent <- function(n, d, df) {
 mvtdens <- function(x, mu, sigma, df) {
   d <- length(mu)
   sigmainv <- solve(sigma)
-  x <- mahalanobis(x, mu, sigmainv, inverted = TRUE)
+  x <- stats::mahalanobis(x, mu, sigmainv, inverted = TRUE)
 
   term1 <- gamma((d + df) / 2) / gamma(df / 2)
   term2 <- sqrt(det(sigmainv) / (df * pi)^d)

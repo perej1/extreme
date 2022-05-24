@@ -28,5 +28,5 @@ Estimator is consistent only for heavy-tailed distributions. Extreme value
 index is estimated with Hill estimator.
 }
 \examples{
-TODO
+#TODO
 }

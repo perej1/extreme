@@ -22,7 +22,7 @@ be in set \eqn{{1,2,\ldots,n}} where \eqn{n} is equal to \code{nrow(x)}.}
 minimized when \code{method = "mcd"}.}
 }
 \value{
-A ellipsoidq object representing the estimate
+A ellipsoidq object representing the estimate.
 }
 \description{
 Estimates (1-p)-quantile region for a very small p.
@@ -32,5 +32,5 @@ Estimator is consistent only for heavy-tailed elliptical distributions.
 Extreme value index is estimated with separating Hill estimator.
 }
 \examples{
-TODO
+#TODO
 }

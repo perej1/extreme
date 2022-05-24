@@ -19,7 +19,7 @@
 #' @export
 #'
 #' @examples
-#' TODO
+#' #TODO
 extregion <- function(x, p, k, method = "sample", alpha = NULL) {
   if (method %!in% c("sample", "mcd")) {
     abort("Invalid 'method'")
