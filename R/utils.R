@@ -1,5 +1,3 @@
-"%!in%" <- Negate("%in%")
-
 #' Generate Sample from Generating Variate of t Distribution
 #'
 #' @param n Sample size.
@@ -29,7 +27,7 @@ mvtdens <- function(x, mu, sigma, df) {
 
   term1 <- gamma((d + df) / 2) / gamma(df / 2)
   term2 <- sqrt(det(sigmainv) / (df * pi)^d)
-  term3 <- (1 + x / df)^(-(d + df) / 2)
+  term3 <- (1 + x / df) ^ (- (d + df) / 2)
 
   term1 * term2 * term3
 }

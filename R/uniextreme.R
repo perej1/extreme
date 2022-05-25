@@ -20,7 +20,7 @@
 extquantile <- function(x, p, k) {
   n <- length(x)
   if (p <= 0 || p >= 1) abort("p must be a value such that 0 < p < 1")
-  if (k %!in% 1:(n - 1)) {
+  if (!(k %in% 1:(n - 1))) {
     abort("value for k has to a whole number between 1 and n-1")
   }
   x <- sort(x, decreasing = FALSE)[(n - k):n]

@@ -21,7 +21,7 @@
 #' @examples
 #' #TODO
 extregion <- function(x, p, k, method = "sample", alpha = NULL) {
-  if (method %!in% c("sample", "mcd")) {
+  if (!(method %in% c("sample", "mcd"))) {
     abort("Invalid 'method'")
   }
   if (method == "mcd" && is.null(alpha)) {
