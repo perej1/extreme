@@ -23,7 +23,8 @@ test_that("square root times square root is equal to original", {
 })
 
 test_that("error is thrown for matrices that are not positive definite", {
-  expect_error(sqrtmat(sigma), "Scatter matrix is not positive definite")
+  expect_error(sqrtmat(sigma),
+  "Scatter matrix is not symmetric positive definite")
 })
 
 test_that("output of relliptical has right dimensions", {

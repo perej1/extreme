@@ -2,29 +2,42 @@
 % Please edit documentation in R/elliptical.R
 \name{relliptical}
 \alias{relliptical}
-\title{Simulate from an Elliptical Distribution}
+\title{Simulate Sample from an Elliptical Distribution}
 \usage{
 relliptical(x, mu, sigma)
 }
 \arguments{
-\item{x}{Sample from generating variate.}
+\item{x}{A double or integer vector representing a sample from the generating
+variate.}
 
-\item{mu}{Location vector.}
+\item{mu}{A double or integer vector representing location of the
+distribution.}
 
-\item{sigma}{Positive-definite scatter matrix.}
+\item{sigma}{A double or integer matrix representing the scatter matrix of
+the distributrion. Argument \code{sigma} must be symmetric
+positive-definite scatter matrix.}
 }
 \value{
 An \code{length(x)} times \code{length(mu)} matrix with one
 observation in each row.
 }
 \description{
-Generate a sample from an elliptical distribution.
+Generate a sample from an elliptical distribution with location \code{mu},
+scatter matrix \code{sigma} and generating variate specified by the sample
+\code{x}. Size of the generated sample is \code{length(x)}.
 }
 \details{
-Samples from elliptical distribution with location \code{mu}, scatter matrix
-\code{sigma} and generating variate specified by the sample x. Size of the
-sample is \code{length(x)}.
+Function samples from a random variable \eqn{X} with stochastic
+representation
+\deqn{X \stackrel{d}{=} \mu + \mathcal{R} \Lambda \mathcal{U},}
+where \eqn{\mu\in\mathbb{R}^m}, \eqn{\mathcal{R}} is is nonnegative random
+variable, \eqn{\mathcal{U}} is a \eqn{m}-dimensional random vector uniformly
+distributed on a unit sphere and \eqn{\Lambda\in \mathbb{R}^{m\times m}} is
+a matrix such that \eqn{\Sigma = \Lambda\Lambda^T} is a symmetric
+positive-definite matrix. Random variables \eqn{\mathcal{R}} and
+\eqn{\mathcal{U}} are independent.
 }
 \examples{
-#TODO
+# Simulate sample from 3-dimensional t-distribution with degrees of
+# freedom equal to three.
 }
