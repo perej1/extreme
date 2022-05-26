@@ -19,6 +19,8 @@ Config/testthat/edition: 3
 Imports: 
     MASS,
     purrr,
+    Rdpack,
     rlang,
     robustbase,
     stats
+RdMacros: Rdpack

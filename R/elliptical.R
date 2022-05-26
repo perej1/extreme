@@ -12,22 +12,28 @@
 #' distributed on a unit sphere and \eqn{\Lambda\in \mathbb{R}^{m\times m}} is
 #' a matrix such that \eqn{\Sigma = \Lambda\Lambda^T} is a symmetric
 #' positive-definite matrix. Random variables \eqn{\mathcal{R}} and
-#' \eqn{\mathcal{U}} are independent.
+#' \eqn{\mathcal{U}} are independent. See for example
+#' \insertCite{cambanis1981}{extreme} for more information about elliptical
+#' distributions.
 #'
-#' @param x A double or integer vector representing a sample from the generating
-#'   variate.
+#' @param x A double or integer vector representing a sample from the
+#'   generating variate.
 #' @param mu A double or integer vector representing location of the
 #'   distribution.
 #' @param sigma A double or integer matrix representing the scatter matrix of
-#'   the distributrion. Argument \code{sigma} must be symmetric
+#'   the distribution. Argument \code{sigma} must be symmetric
 #'   positive-definite scatter matrix.
 #' @return An \code{length(x)} times \code{length(mu)} matrix with one
 #'   observation in each row.
-#' @export
 #'
 #' @examples
 #' # Simulate sample from 3-dimensional t-distribution with degrees of
 #' # freedom equal to three.
+#'
+#' @references
+#'   \insertAllCited{}
+#'
+#' @export
 relliptical <- function(x, mu, sigma) {
   if ((!is.integer(x) && !is.double(x)) || !is.vector(x) || !all(x >= 0)) {
     abort("`x` must be a nonnegative numeric vector.")

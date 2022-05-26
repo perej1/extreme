@@ -7,14 +7,14 @@
 relliptical(x, mu, sigma)
 }
 \arguments{
-\item{x}{A double or integer vector representing a sample from the generating
-variate.}
+\item{x}{A double or integer vector representing a sample from the
+generating variate.}
 
 \item{mu}{A double or integer vector representing location of the
 distribution.}
 
 \item{sigma}{A double or integer matrix representing the scatter matrix of
-the distributrion. Argument \code{sigma} must be symmetric
+the distribution. Argument \code{sigma} must be symmetric
 positive-definite scatter matrix.}
 }
 \value{
@@ -35,9 +35,15 @@ variable, \eqn{\mathcal{U}} is a \eqn{m}-dimensional random vector uniformly
 distributed on a unit sphere and \eqn{\Lambda\in \mathbb{R}^{m\times m}} is
 a matrix such that \eqn{\Sigma = \Lambda\Lambda^T} is a symmetric
 positive-definite matrix. Random variables \eqn{\mathcal{R}} and
-\eqn{\mathcal{U}} are independent.
+\eqn{\mathcal{U}} are independent. See for example
+\insertCite{cambanis1981}{extreme} for more information about elliptical
+distributions.
 }
 \examples{
 # Simulate sample from 3-dimensional t-distribution with degrees of
 # freedom equal to three.
+
+}
+\references{
+\insertAllCited{}
 }
