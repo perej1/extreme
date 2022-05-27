@@ -53,14 +53,17 @@
 #'
 #' @export
 relliptical <- function(r, mu, sigma) {
-  if ((!is.integer(r) && !is.double(r)) || !is.vector(r) || !all(r >= 0)) {
-    abort("`r` must be a nonnegative numeric vector.")
+  check_required(r)
+  check_required(mu)
+  check_required(sigma)
+  if (!is_numeric(r) || !all(r >= 0)) {
+    abort("`r` must be a nonnegative integer or double vector.")
   }
-  if ((!is.integer(mu) && !is.double(mu)) || !is.vector(mu)) {
-    abort("`mu` must be a numeric vector.")
+  if (!is_numeric(mu)) {
+    abort("`mu` must be an integer or double vector.")
   }
-  if ((!is.integer(sigma) && !is.double(sigma)) || !is.matrix(sigma)) {
-    abort("`sigma` must be a numeric matrix.")
+  if (!is_matrix(sigma)) {
+    abort("`sigma` must be an integer or double matrix.")
   }
   if (!all(dim(sigma) == rep(length(mu), 2))) {
     abort("Dimensions of `mu` and `sigma` must match.")
@@ -86,7 +89,7 @@ relliptical <- function(r, mu, sigma) {
 sqrtmat <- function(sigma) {
   eigenval <- eigen(sigma)$values
   if (any(eigenval <= 0) || any(sigma != t(sigma))) {
-    abort("Scatter matrix is not symmetric positive definite")
+    abort("`sigma` must be a symmetric positive definite matrix.")
   }
   eigenvec <- eigen(sigma)$vectors
   eigenvec %*% diag(eigenval^0.5) %*% t(eigenvec)
