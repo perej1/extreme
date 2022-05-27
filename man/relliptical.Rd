@@ -2,12 +2,12 @@
 % Please edit documentation in R/elliptical.R
 \name{relliptical}
 \alias{relliptical}
-\title{Simulate Sample from an Elliptical Distribution}
+\title{Simulate a Sample from an Elliptical Distribution}
 \usage{
-relliptical(x, mu, sigma)
+relliptical(r, mu, sigma)
 }
 \arguments{
-\item{x}{A double or integer vector representing a sample from the
+\item{r}{A double or integer vector representing a sample from the
 generating variate.}
 
 \item{mu}{A double or integer vector representing location of the
@@ -18,13 +18,13 @@ the distribution. Argument \code{sigma} must be symmetric
 positive-definite scatter matrix.}
 }
 \value{
-An \code{length(x)} times \code{length(mu)} matrix with one
+An \code{length(r)} times \code{length(mu)} matrix with one
 observation in each row.
 }
 \description{
 Generate a sample from an elliptical distribution with location \code{mu},
 scatter matrix \code{sigma} and generating variate specified by the sample
-\code{x}. Size of the generated sample is \code{length(x)}.
+\code{r}. Size of the generated sample is \code{length(r)}.
 }
 \details{
 Function samples from a random variable \eqn{X} with stochastic
@@ -35,13 +35,31 @@ variable, \eqn{\mathcal{U}} is a \eqn{m}-dimensional random vector uniformly
 distributed on a unit sphere and \eqn{\Lambda\in \mathbb{R}^{m\times m}} is
 a matrix such that \eqn{\Sigma = \Lambda\Lambda^T} is a symmetric
 positive-definite matrix. Random variables \eqn{\mathcal{R}} and
-\eqn{\mathcal{U}} are independent. See for example
+\eqn{\mathcal{U}} are independent. See, for example,
 \insertCite{cambanis1981}{extreme} for more information about elliptical
 distributions.
+
+Matrix \eqn{\Lambda} is calculated with help of the eigenvalue
+decomposition. I.e,
+\deqn{\Lambda = U A^{1/2} U^T,}
+where \eqn{U} is a orthogonal matrix with eigenvectors of the matrix
+\eqn{\Sigma} as columns and \eqn{A^{1/2} = \textrm{diag}(\lambda^{1/2}_1,
+\lambda^{1/2}_2, \dots, \lambda^{1/2}_m)}. Here \eqn{\lambda_1, \lambda_2,
+\ldots, \lambda_m} are eigenvalues of the matrix \eqn{\Sigma}.
 }
 \examples{
-# Simulate sample from 3-dimensional t-distribution with degrees of
-# freedom equal to three.
+# Simulate a sample from 2-dimensional t-distribution with degrees of
+# freedom equal to three
+n <- 100
+d <- 2
+df <- 3
+r <- sqrt(d * rf(n, d, df))
+mu <- c(-1, 1)
+sigma <- matrix(c(11, 10.5, 10.5, 11.25), nrow = 2, byrow = TRUE)
+x <- relliptical(r, mu, sigma)
+
+# Plot the sample
+plot(x)
 
 }
 \references{
