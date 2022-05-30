@@ -36,7 +36,7 @@ distributed on a unit sphere and \eqn{\Lambda\in \mathbb{R}^{m\times m}} is
 a matrix such that \eqn{\Sigma = \Lambda\Lambda^T} is a symmetric
 positive-definite matrix. Random variables \eqn{\mathcal{R}} and
 \eqn{\mathcal{U}} are independent. See, for example,
-\insertCite{cambanis1981}{extreme} for more information about elliptical
+(Cambanis et al. 1981) for more information about elliptical
 distributions.
 
 Matrix \eqn{\Lambda} is calculated with help of the eigenvalue
@@ -49,7 +49,7 @@ where \eqn{U} is a orthogonal matrix with eigenvectors of the matrix
 }
 \examples{
 # Simulate a sample from 2-dimensional t-distribution with degrees of
-# freedom equal to three
+# freedom equal to three.
 n <- 100
 d <- 2
 df <- 3
@@ -63,5 +63,10 @@ plot(x)
 
 }
 \references{
-\insertAllCited{}
+Cambanis S, Huang S, Simons G (1981). "On the theory of
+elliptically contoured distributions." Journal of Multivariate Analysis,
+11(3), 368-385.
+}
+\seealso{
+\code{\link{ellipsoidq}}, \code{\link{extregion}}
 }

@@ -13,7 +13,7 @@
 #' a matrix such that \eqn{\Sigma = \Lambda\Lambda^T} is a symmetric
 #' positive-definite matrix. Random variables \eqn{\mathcal{R}} and
 #' \eqn{\mathcal{U}} are independent. See, for example,
-#' \insertCite{cambanis1981}{extreme} for more information about elliptical
+#' (Cambanis et al. 1981) for more information about elliptical
 #' distributions.
 #'
 #' Matrix \eqn{\Lambda} is calculated with help of the eigenvalue
@@ -31,12 +31,13 @@
 #' @param sigma A double or integer matrix representing the scatter matrix of
 #'   the distribution. Argument \code{sigma} must be symmetric
 #'   positive-definite scatter matrix.
+#'
 #' @return An \code{length(r)} times \code{length(mu)} matrix with one
 #'   observation in each row.
 #'
 #' @examples
 #' # Simulate a sample from 2-dimensional t-distribution with degrees of
-#' # freedom equal to three
+#' # freedom equal to three.
 #' n <- 100
 #' d <- 2
 #' df <- 3
@@ -48,8 +49,11 @@
 #' # Plot the sample
 #' plot(x)
 #'
-#' @references
-#'   \insertAllCited{}
+#' @seealso \code{\link{ellipsoidq}}, \code{\link{extregion}}
+#'
+#' @references Cambanis S, Huang S, Simons G (1981). "On the theory of
+#'   elliptically contoured distributions." Journal of Multivariate Analysis,
+#'   11(3), 368-385.
 #'
 #' @export
 relliptical <- function(r, mu, sigma) {
