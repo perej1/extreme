@@ -68,5 +68,5 @@ elliptically contoured distributions." Journal of Multivariate Analysis,
 11(3), 368-385.
 }
 \seealso{
-\code{\link{ellipsoidq}}, \code{\link{extregion}}
+\code{\link{ellipsoidq}}, \code{\link{qreg}}
 }

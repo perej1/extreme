@@ -49,7 +49,7 @@
 #' # Plot the sample
 #' plot(x)
 #'
-#' @seealso \code{\link{ellipsoidq}}, \code{\link{extregion}}
+#' @seealso \code{\link{ellipsoidq}}, \code{\link{qreg}}
 #'
 #' @references Cambanis S, Huang S, Simons G (1981). "On the theory of
 #'   elliptically contoured distributions." Journal of Multivariate Analysis,

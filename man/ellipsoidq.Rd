@@ -50,5 +50,5 @@ r <- sqrt(d * qf(1 - p, d, df))
 x <- ellipsoidq(mu, sigma, r)
 }
 \seealso{
-\code{\link{relliptical}}, \code{\link{extregion}}
+\code{\link{relliptical}}, \code{\link{qreg}}
 }

@@ -25,34 +25,46 @@ extquantile <- function(x, p, k) {
   x[1] * (k / (n * p))^gamma
 }
 
-#' Estimate Extreme Quantile Region
+#' Estimate Quantile Region
 #'
-#' Estimates (1-p)-quantile region for a very small p.
+#' Estimates (1-p)-quantile region.
 #'
-#' Estimator is consistent only for heavy-tailed elliptical distributions.
-#' Extreme value index is estimated with separating Hill estimator.
+#' Two estimators are provided. Extreme quantile estimator is consistent only
+#' for heavy-tailed elliptical distributions. Extreme value index is estimated
+#' with separating Hill estimator. Other estimator is the conventional sample
+#' quantile.
 #'
 #' @param x A matrix representing sample from elliptical distribution.
 #'   Rows are observations and columns dimensions.
 #' @param p Probability corresponding to \code{(1-p)}-quantile. Values in
 #'   interval \eqn{(0, 1)} are accepted.
+#' @param method How location and scatter should be estimated?
+#' @param qmethod How quantile should be estimated?
 #' @param k Threshold parameter for the estimator. Threshold parameter has to
 #'   be in set \eqn{{1,2,\ldots,n}} where \eqn{n} is equal to \code{nrow(x)}.
-#' @param method How location and scatter should be estimated?
 #' @param alpha Controls size of the subsets over which the determinant is
 #'   minimized when \code{method = "mcd"}.
+#' @param mu Given estimate for location.
+#' @param sigma Given estimate for scatter.
 #'
 #' @return A ellipsoidq object representing the estimate.
 #' @export
 #'
 #' @examples
 #' #TODO
-extregion <- function(x, p, k, method = "sample", alpha = NULL) {
-  if (!(method %in% c("sample", "mcd"))) {
-    abort("Invalid 'method'")
+qreg <- function(x, p, method = "sample", qmethod = "sample", k = NULL,
+                 alpha = NULL, mu = NULL, sigma = NULL) {
+  if (!(method %in% c("sample", "mcd", "given"))) {
+    abort("Invalid method for estimating location-scatter pair.")
+  }
+  if (!(qmethod %in% c("extreme", "sample"))) {
+    abort("Invalid method for estimating quantile.")
   }
   if (method == "mcd" && is.null(alpha)) {
-    abort("'method == mcd' but value for alpha is not given")
+    abort("'method == mcd' but value for alpha is not given.")
+  }
+  if (method == "given" && (is.null(mu) || is.null(sigma))) {
+    abort("'method == given' but value for mu or sigma is not given.")
   }
   if (method == "sample") {
     mu <- colMeans(x)
@@ -63,7 +75,13 @@ extregion <- function(x, p, k, method = "sample", alpha = NULL) {
     mu <- est$center
     sigma <- est$cov
   }
+
   x <- sqrt(stats::mahalanobis(x, mu, sigma, inverted = FALSE))
-  r <- extquantile(x, p, k)
+  if (qmethod == "extreme") {
+    r <- extquantile(x, p, k)
+    }
+  if (qmethod == "sample") {
+    r <- stats::quantile(x, 1 - p)
+  }
   ellipsoidq(mu, sigma, r)
 }

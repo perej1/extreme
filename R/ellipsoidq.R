@@ -16,7 +16,7 @@
 #' \eqn{\mathcal{R}}. See documentation of \code{\link{relliptical}} for more
 #' details about elliptical distributions.
 #'
-#' @seealso \code{\link{relliptical}}, \code{\link{extregion}}
+#' @seealso \code{\link{relliptical}}, \code{\link{qreg}}
 #'
 #' @param mu An integer or double vector. Represents location of the ellipsoid.
 #' @param sigma An integer or double matrix. Determines the shape of the
