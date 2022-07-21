@@ -4,12 +4,13 @@
 \alias{ellipsoidq}
 \title{Helper for Creating Objects of Class \code{ellipsoidq}}
 \usage{
-ellipsoidq(mu = rep(0, 2), sigma = diag(2), scale = 1)
+ellipsoidq(location = rep(0, 2), scatter = diag(2), scale = 1)
 }
 \arguments{
-\item{mu}{An integer or double vector. Represents location of the ellipsoid.}
+\item{location}{An integer or double vector. Represents location of the
+ellipsoid.}
 
-\item{sigma}{An integer or double matrix. Determines the shape of the
+\item{scatter}{An integer or double matrix. Determines the shape of the
 ellipsoid.}
 
 \item{scale}{An integer or double scalar. Scales the ellipsoid, see details

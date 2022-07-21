@@ -18,8 +18,9 @@
 #'
 #' @seealso \code{\link{relliptical}}, \code{\link{qreg}}
 #'
-#' @param mu An integer or double vector. Represents location of the ellipsoid.
-#' @param sigma An integer or double matrix. Determines the shape of the
+#' @param location An integer or double vector. Represents location of the
+#' ellipsoid.
+#' @param scatter An integer or double matrix. Determines the shape of the
 #'   ellipsoid.
 #' @param scale An integer or double scalar. Scales the ellipsoid, see details
 #'   for more information.
@@ -39,16 +40,17 @@
 #' sigma <- matrix(c(11, 10.5, 10.5, 11.25), nrow = 2, byrow = TRUE)
 #' r <- sqrt(d * qf(1 - p, d, df))
 #' x <- ellipsoidq(mu, sigma, r)
-ellipsoidq <- function(mu = rep(0, 2), sigma = diag(2), scale = 1) {
-  validate_ellipsoidq(new_ellipsoidq(mu, sigma, scale))
+ellipsoidq <- function(location = rep(0, 2), scatter = diag(2), scale = 1) {
+  validate_ellipsoidq(new_ellipsoidq(location, scatter, scale))
 }
 
 #' Constructor for Objects of Class ellipsoidq
 #'
 #' Constructs ellipsoidq object without any validation checks.
 #'
-#' @param mu An integer or double vector. Represents location of the ellipsoid.
-#' @param sigma An integer or double matrix. Determines the shape of the
+#' @param location An integer or double vector. Represents location of the
+#' ellipsoid.
+#' @param scatter An integer or double matrix. Determines the shape of the
 #'   ellipsoid.
 #' @param scale An integer or double scalar. Scales the ellipsoid.
 #'
