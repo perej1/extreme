@@ -81,7 +81,7 @@ qreg <- function(x, p, method = "sample", qmethod = "sample", k = NULL,
     r <- extquantile(x, p, k)
     }
   if (qmethod == "sample") {
-    r <- stats::quantile(x, 1 - p)
+    r <- stats::quantile(x, 1 - p, type = 1)
   }
   ellipsoidq(mu, sigma, r)
 }
