@@ -10,6 +10,10 @@
 
 ## Overview
 
+CURRENTLY THE DEVELOPMENT OF THE PACKAGE IS ON HOLD. I am not sure if I
+will continue developing the package. At least it has served as a lesson
+for me about basics of creating an R package.
+
 *extreme* is a R package for estimating multivariate elliptical
 *(1-p)*-quantile regions. Currently, there are two available estimators.
 The first one is based on sample quantile and works well when the
@@ -38,8 +42,3 @@ Essentially, the package provides two functionalities.
 2.  Calculate quantile region estimate with function `qreg`. Function
     `qreg` returns an `ellipsoidq` object representing the elliptical
     quantile estimate.
-
-## Example
-
-For an example, see repository
-[perej1/elliptical-sim](https://github.com/perej1/elliptical-sim).
